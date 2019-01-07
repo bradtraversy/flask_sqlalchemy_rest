@@ -23,8 +23,8 @@ python app.py
 
 ## Endpoints
 
-* GET /product
-* GET /product/:id
-* POST (Protected) /product
-* PUT (Protected) /product/:id
-* DELETE (Protected) /product/:id
+* GET     /product
+* GET     /product/:id
+* POST    /product
+* PUT     /product/:id
+* DELETE  /product/:id
