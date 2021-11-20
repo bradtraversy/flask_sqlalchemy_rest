@@ -1,60 +1,25 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy 
-from flask_marshmallow import Marshmallow 
+import sqlalchemy
+import psycopg2
 import os
 import pandas as pd
+from fastapi import FastAPI
+import uvicorn
+
+
 
 # Init app
-app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
+app = FastAPI()
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://gitpod@localhost/postgres'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db_uri = 'postgresql://gitpod@localhost/postgres'
 # Init db
-db = SQLAlchemy(app)
-# Init ma
-ma = Marshmallow(app)
+engine = sqlalchemy.create_engine(db_uri)
 
-# Product Class/Model
-class Product(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(100), unique=True)
-  description = db.Column(db.String(200))
-  price = db.Column(db.Float)
-  qty = db.Column(db.Integer)
-
-  def __init__(self, name, description, price, qty):
-    self.name = name
-    self.description = description
-    self.price = price
-    self.qty = qty
-
-# Product Schema
-class ProductSchema(ma.Schema):
-  class Meta:
-    fields = ('id', 'name', 'description', 'price', 'qty')
-
-# Init schema
-product_schema = ProductSchema()
-products_schema = ProductSchema()
-
-# Create a Product
-@app.route('/product', methods=['POST'])
-def add_product():
-  name = request.json['name']
-  description = request.json['description']
-  price = request.json['price']
-  qty = request.json['qty']
-
-  new_product = Product(name, description, price, qty)
-
-  db.session.add(new_product)
-  db.session.commit()
-
-  return product_schema.jsonify(new_product)
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 # Get All Products
-@app.route('/product', methods=['GET'])
+@app.post('/product')
 def get_products():
   df=pd.DataFrame({'name' : ['User 1', 'User 2', 'User 3']})
   connection = db.raw_connection()
@@ -65,40 +30,13 @@ def get_products():
   print('hello')
   return jsonify(result)
 
-# Get Single Products
-@app.route('/product/<id>', methods=['GET'])
-def get_product(id):
-  product = Product.query.get(id)
-  return product_schema.jsonify(product)
+@app.route('/', methods=['GET'])
+def say_hello():
+  return "<h1>hello there mate</h1>"
 
-# Update a Product
-@app.route('/product/<id>', methods=['PUT'])
-def update_product(id):
-  product = Product.query.get(id)
 
-  name = request.json['name']
-  description = request.json['description']
-  price = request.json['price']
-  qty = request.json['qty']
-
-  product.name = name
-  product.description = description
-  product.price = price
-  product.qty = qty
-
-  db.session.commit()
-
-  return product_schema.jsonify(product)
-
-# Delete Product
-@app.route('/product/<id>', methods=['DELETE'])
-def delete_product(id):
-  product = Product.query.get(id)
-  db.session.delete(product)
-  db.session.commit()
-
-  return product_schema.jsonify(product)
 
 # Run Server
-if __name__ == '__main__':
-  app.run(debug=True)
+if __name__ == "__main__":
+  uvicorn.run(app)
+
