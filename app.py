@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy 
 from flask_marshmallow import Marshmallow 
 import os
+import pandas as pd
 
 # Init app
 app = Flask(__name__)
@@ -34,8 +35,8 @@ class ProductSchema(ma.Schema):
     fields = ('id', 'name', 'description', 'price', 'qty')
 
 # Init schema
-product_schema = ProductSchema(strict=True)
-products_schema = ProductSchema(many=True, strict=True)
+product_schema = ProductSchema()
+products_schema = ProductSchema()
 
 # Create a Product
 @app.route('/product', methods=['POST'])
@@ -55,9 +56,14 @@ def add_product():
 # Get All Products
 @app.route('/product', methods=['GET'])
 def get_products():
+  df=pd.DataFrame({'name' : ['User 1', 'User 2', 'User 3']})
+  connection = db.raw_connection()
+  df.to_sql('test',connection)
+  print("-------------------DUDE")
   all_products = Product.query.all()
   result = products_schema.dump(all_products)
-  return jsonify(result.data)
+  print('hello')
+  return jsonify(result)
 
 # Get Single Products
 @app.route('/product/<id>', methods=['GET'])
