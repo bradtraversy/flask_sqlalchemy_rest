@@ -1,2 +1,5 @@
-image:
-  file: .gitpod.Dockerfile
+image: gitpod/workspace-postgres
+
+tasks:
+  - init: pip install -r requirements.txt
+    command: echo this is a test mate
