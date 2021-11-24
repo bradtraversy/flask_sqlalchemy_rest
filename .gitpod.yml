@@ -3,4 +3,4 @@ image: gitpod/workspace-postgres
 
 tasks:
   - init: pip install -r requirements.txt
-    command: python app.py
+    command: python src/app.py
