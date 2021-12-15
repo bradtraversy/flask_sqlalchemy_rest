@@ -1,5 +1,6 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
-image: gitpod/workspace-postgres
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - init: pip install -r requirements.txt
