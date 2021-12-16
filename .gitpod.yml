@@ -4,4 +4,4 @@ image:
 
 tasks:
   - init: pip install -r requirements.txt
-  - init: python src/main.py
+    command: python src/main.py
