@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+# firebase config file
+*esg-analytics.json
 
 # Distribution / packaging
 bin/
@@ -49,3 +51,6 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+#pyc files
+*.pyc

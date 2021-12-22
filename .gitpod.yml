@@ -4,3 +4,15 @@ image: gitpod/workspace-postgres
 tasks:
   - init: pip install -r requirements.txt
     command: python src/main.py
+    env:
+      env:
+        TYPE: "service_account"
+        PROJECT_ID: "esg-analytics-595c5"
+        PRIVATE_KEY_ID:  "50c271b27bc8e34d8f3e91edd32a6e72563079b2"
+        PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC7p3GTldbN0341\nZR9cFjPh1xdwMWr2ZAGr7WJYFPDfczQFGOliAbg0WbvYnS+g0cA7uUrVGGjDvfX/\np+IqooFvjU0AO2evkqj1LytSXWpBkP9PDPTSV6Y8AlZi1YkiHp5P0CNGebziN2Eo\n1dnEmCjreXR9d47gQAa/9ghQfKcgIlihTib9/196NRH4M2cdcvvSQPkoVB5gFnwt\nKNbuJTfipQcA4Crm+X7gCaX5bpXFxRzjCYAU4oFk2dzh+2RhMTA7Fu4R3VI3UqFi\ncDjRpICinwR1xuyOU7j0u8IEXnQA6AttfJxvRb0UVZQXDTglwUxY+RlPNZ2BL3Sk\nM20/LpoVAgMBAAECggEACj4MBzSYaPDC/1TsZq6TON+wWLroc20xy9RKYp6L/NTx\nJoO9qKWJjBlHapM+cwOX1OVaxgb4dZH5VXGwo3KYvYG5IvWFxdxrqpb0lqDg00DV\nNUJIB5tp8vW5Xi4jt3AejyKAFmaVI8TG4b91t321orqk8XyJ2MgYhjg+gRl4rBp+\nhCSFXsEgL6sHIYa9pk0VqoXvZxlORFEp5Klz0h8shsi22IjOTImoLRwSrYObVkFH\nWDB7jiuxLt60rut/bASR8FThoXv7nBT3U4nK0Mx7tRrjNiqkW4MsyZlrbkxvztgB\nNqcAgE7uciggEI5qCypE6y9pWi+wdUuPQbs3ekIKAQKBgQDoJW+EJZxOJdEsbWtI\nxRRu2Eh6+zS3F2hRb+WtimamJhyw33E/qgiAPxIeME1MR6vEHXQZntc37MXzDQVX\nOB7xGXZkRl1ZhHFhgi9Wqmg2vBFgkIEsOWoWEjjryRNeg7X4WPHdo+5/Nxl4zGaw\nnJO756msDOBhTD2CNbOvlv1kFQKBgQDO76ZlTVPGSfGtvXXJTx1QZLwmSjk09re0\nwBCC98lUV1mQdSGvv1zm4qW1iM6XK5MIZ5rksyHlBtfoKjhKrszXiia0Yv+ZFL3t\nDhz9wnK+mH8+nOk/5/lRVruD982vfg5OE2MwD+mW2d89K+Da58XQ/LLTA5Pyc9bK\nKRfXRIveAQKBgHka1nM8367RAa9IobhDv+YXhLBLjnOZjX02f74pvmUc6sjGuCC7\nRlYJER2YmyqZFR1pNCENgT8WkSm7eDbI+zNR0jZ7ksVZV4DD1ohCu70aHYKfwBNf\nHF3JQdKXgjhDQ9H8LKkwlQHer7YaA9RMyrEzKIut5/w6NrhP5Z5LiYMFAoGAH0z+\nlUoaBt8+cDI9M8MEwxlJoF0PxCQha3S1yqmiSWChCom9G7FNYxsbR5c28ITFy7qo\nIjm6QcNEOzjPpPRFxcB+1EA5OzV4+PduiS+1XYEBlj3zxhfXjWcaG/8KnKXrkgG6\nuhVeFtRDwSP28gWm1VKz1dkvsre04IVQtt4GbgECgYBEMjhHH9XzFBS98aQY0rxA\nwdH3LQcMR7BsXiRyQjCRw6lKVT/lBITQxFaLx2dr9VjLBsWeRIQQbZ2yxzleRnj/\n2zFvCJuLrxYxs8W04XNMdrl0shbV8qs7H0Y40UXn4+Cui+hzFhOFXurGSRcEnr2V\nWycFr2gqz73JF29KZj0uxQ==\n-----END PRIVATE KEY-----\n"
+        CLIENT_EMAIL: "firebase-adminsdk-tr4vn@esg-analytics-595c5.iam.gserviceaccount.com"
+        CLIENT_ID: "114017362827364427008"
+        AUTH_URI: "https://accounts.google.com/o/oauth2/auth"
+        TOKEN_URI: "https://oauth2.googleapis.com/token"
+        AUTH_PROVIDER_X509_CERT_URL: "https://www.googleapis.com/oauth2/v1/certs"
+        CLIENT_X509_CERT_URL: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tr4vn%40esg-analytics-595c5.iam.gserviceaccount.com"
