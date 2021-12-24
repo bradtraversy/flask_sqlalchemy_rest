@@ -20,10 +20,13 @@ cred_object = {
     "client_x509_cert_url": os.environ['CLIENT_X509_CERT_URL'],
 }
 
-
+# Create file from credentials object
 with open(cred_file_path, "w") as outfile:
     json.dump(cred_object, outfile)
 
-
+# Initialize Admin SDK by specifying file path
 cred = credentials.Certificate(cred_file_path)
 firebase_admin.initialize_app(cred)
+
+# Remove file once SDK init is done
+os.remove(cred_file_path)

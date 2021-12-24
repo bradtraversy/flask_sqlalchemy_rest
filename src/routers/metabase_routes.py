@@ -12,7 +12,7 @@ def get_metabase_token():
         "resource": {"dashboard": 1},
         "params": {
         },
-        "exp": round(time.time()) + (60 * 60)  # 2-hour expiration
+        "exp": round(time.time()) + (60 * 60)  # 1-hour expiration
     }
     token = jwt.encode(payload, METABASE_SECRET_KEY, algorithm="HS256")
     iframeUrl = METABASE_SITE_URL + "/embed/dashboard/" + \
@@ -28,6 +28,7 @@ def check_token(token):
     except Exception as e:
         print('------------------- ERROR MESSAGE HERE ---------------------------------')
         print(e)
+        print('------------------------------------------------------------------------')
         return False
 
 
